@@ -1,0 +1,166 @@
+.app-body{
+    width: 1080px;
+    min-width: 480px;
+    border: 3px solid  #333;
+    border-radius: 1%;
+    background-color: #3f3f3f;
+    margin: 2%;
+    padding: 1%;
+    color: silver;
+    text-align: center;
+    font-family: Helvetica;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.clear{
+    clear: both;
+}
+
+@media print, screen and (max-width: 1080px) {
+    .app-body{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 80%;
+    }
+
+    .content {
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .imageUrlText{
+        display: block;
+        width: 50%;
+    }
+
+    .levels{
+        margin-left: 10%;
+    }
+
+  }
+
+.leftContent, .middleContent, .rightContent{
+    color:  #333;
+    margin: 0.5%;
+    background-color: #6E6E6e;
+    flex-direction: column;
+    padding: 3%;
+    padding-top: 0.5%;
+    width: 42%;
+    border: 3px solid  #333;
+    border-radius: 10%;
+    width: 380px;
+    height: 450px;
+    align-items: center;
+}
+
+h2{
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+img{
+    background-size: 300px 300px;
+    width: 312px;
+    height: 312px;
+    margin-top: 3%;
+    border: 2px solid #333;
+    border-radius: 5%;
+    margin-bottom: 3%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #6E6E6e;
+}
+
+li{
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+    display:inline-block;
+    width: 22%;
+    cursor: pointer;
+    padding: 3% 1%;
+    margin: 0.1%;
+    border: 1px solid silver;
+    font-size: 110%;
+}
+
+.defaultLvlChooser{
+    background-color: white;
+    color: #333;
+}
+
+.levels{
+    width: 330px;
+    height: 330px;
+    margin-left: 5%;
+    margin-top: 4%;
+}
+
+.imageUrlText{
+    width: 90%;
+    font-size: 105%;
+    border: 1px solid #333;
+    border-radius: 2%;
+    background-color: #333;
+    color: white;
+    padding: 2%;
+    margin: 1%;
+}
+
+.uploadImageButton{
+    width: 40%;
+    font-weight: bold;
+    font-size: 120%;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 2%;
+    border: 1px solid #333;
+    border-radius: 5%;
+    margin-left: 1%;
+}
+
+.uploadImageButton:hover{
+    background-color: white;
+    color: #333;
+}
+
+.rightContent{
+    width: auto;
+    height: 200px;
+    padding: 2%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+#thead{
+    border-bottom: 1px solid white;
+}

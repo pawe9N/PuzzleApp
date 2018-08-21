@@ -1,0 +1,15 @@
+.puzzles {
+    width: 330px;
+    height: 330px;
+}
+.puzzle{
+    background-size: 300px 300px;
+    float: left;
+    border: 1px solid white;
+    padding: 1px;
+}
+
+.puzzle:hover{
+    cursor: pointer;
+    border-radius: 50%;
+}
