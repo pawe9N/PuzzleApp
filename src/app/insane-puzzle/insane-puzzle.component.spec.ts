@@ -2,22 +2,22 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-import { VeryHardPuzzleComponent } from './very-hard-puzzle.component';
+import { InsanePuzzleComponent } from './insane-puzzle.component';
 
-describe('VeryHardPuzzleComponent', () => {
-  let component: VeryHardPuzzleComponent;
-  let fixture: ComponentFixture<VeryHardPuzzleComponent>;
+describe('InsanePuzzleComponent', () => {
+  let component: InsanePuzzleComponent;
+  let fixture: ComponentFixture<InsanePuzzleComponent>;
   let de: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VeryHardPuzzleComponent ]
+      declarations: [ InsanePuzzleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VeryHardPuzzleComponent);
+    fixture = TestBed.createComponent(InsanePuzzleComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement;
     

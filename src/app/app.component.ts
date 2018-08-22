@@ -3,23 +3,28 @@ import * as $ from 'jquery';
 import { EasyPuzzleComponent } from './easy-puzzle/easy-puzzle.component';
 import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
 import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
-import { VeryHardPuzzleComponent } from './very-hard-puzzle/very-hard-puzzle.component';
-import { PuzzleComponent } from './puzzle/puzzle.component';
+import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
+import { CookieService } from 'ngx-cookie-service';
+import { PointsTableComponent } from './points-table/points-table.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ CookieService ]
 })
 export class AppComponent {
   private title = 'PuzzleApp';
-  private imageUrl = "https://polska-flaga.pl/userdata/gfx/6ab36c9494c25b752941d65cf6d1140f.jpg";
+  private imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/6b/Zamek_w_B%C4%99dzinie_1.JPG";
   private choosedLvl = 1;
+
+  constructor(private cookieService: CookieService) { }
 
   @ViewChild(EasyPuzzleComponent) easyPuzzle:EasyPuzzleComponent;
   @ViewChild(MediumPuzzleComponent) mediumPuzzle:MediumPuzzleComponent;
   @ViewChild(HardPuzzleComponent) hardPuzzle:HardPuzzleComponent;
-  @ViewChild(VeryHardPuzzleComponent) varyHardPuzzle:VeryHardPuzzleComponent;
+  @ViewChild(InsanePuzzleComponent) insanePuzzle:InsanePuzzleComponent;
+  @ViewChild(PointsTableComponent) pointsTable:PointsTableComponent;
 
   ngOnInit() {
     $(document).ready(()=>{
@@ -60,7 +65,7 @@ export class AppComponent {
       case 1: this.easyPuzzle.createPuzzle();break;
       case 2: this.mediumPuzzle.createPuzzle();break;
       case 3: this.hardPuzzle.createPuzzle();break;
-      case 4: this.varyHardPuzzle.createPuzzle();break;
+      case 4: this.insanePuzzle.createPuzzle();break;
     }
   }
 
@@ -71,5 +76,10 @@ export class AppComponent {
   
   changeImageUrl(url){
     this.imageUrl = url;
+  }
+
+  updateCookie(puzzleLvl) {
+    console.log(puzzleLvl);
+    this.pointsTable.updateCookie(puzzleLvl);
   }
 }

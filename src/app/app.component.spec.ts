@@ -4,7 +4,7 @@ import { EasyPuzzleComponent } from './easy-puzzle/easy-puzzle.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
 import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
 import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
-import { VeryHardPuzzleComponent } from './very-hard-puzzle/very-hard-puzzle.component';
+import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -15,7 +15,7 @@ describe('AppComponent', () => {
         PuzzleComponent,
         MediumPuzzleComponent,
         HardPuzzleComponent,
-        VeryHardPuzzleComponent
+        InsanePuzzleComponent
       ],
     }).compileComponents();
   }));

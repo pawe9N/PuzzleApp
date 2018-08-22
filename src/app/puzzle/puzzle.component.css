@@ -11,5 +11,5 @@
 
 .puzzle:hover{
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 20%;
 }

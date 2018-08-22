@@ -3,15 +3,16 @@ import { PuzzleComponent } from '../puzzle/puzzle.component';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'very-hard-puzzle',
-  templateUrl: './very-hard-puzzle.component.html',
-  styleUrls: ['../puzzle/puzzle.component.css','./very-hard-puzzle.component.css']
+  selector: 'insane-puzzle',
+  templateUrl: './insane-puzzle.component.html',
+  styleUrls: ['../puzzle/puzzle.component.css','./insane-puzzle.component.css']
 })
-export class VeryHardPuzzleComponent extends PuzzleComponent {
+export class InsanePuzzleComponent extends PuzzleComponent {
 
   constructor() {
     super();
 
+    this.ngForVar = Array(36).fill(0).map((x,i)=>i+1);
     this.board = [];
     this.lvl = 4;
     this.inRow = 6;

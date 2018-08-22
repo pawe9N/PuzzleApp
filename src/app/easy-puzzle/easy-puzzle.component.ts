@@ -13,6 +13,7 @@ export class EasyPuzzleComponent extends PuzzleComponent{
   constructor() {
     super();
 
+    this.ngForVar = Array(9).fill(0).map((x,i)=>i+1);
     this.board = [];
     this.lvl = 1;
     this.inRow = 3;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -6,12 +6,15 @@ import * as $ from 'jquery';
   template: '',
   styleUrls: ['./puzzle.component.css']
 })
-export abstract class PuzzleComponent implements OnInit {
+export class PuzzleComponent implements OnInit {
   public firstPiece;
   public secondPiece;
   public board;
   public lvl;
   public inRow;
+  public ngForVar;
+
+  @Output() updatePoints = new EventEmitter();
 
   constructor() { }
 
@@ -62,13 +65,11 @@ export abstract class PuzzleComponent implements OnInit {
       let lvl = $(this.firstPiece).attr('class');
       lvl = parseInt(lvl.split('lv')[1]);
 
-      let isMatching;
-      if (lvl == 1) {
-        isMatching = this.isSolved();
-      }
+      let isMatching = this.isSolved();
       if (isMatching) {
         setTimeout(() => {
           alert("You solved Level:" + lvl + " of puzzle");
+          this.updatePoints.emit(lvl);
           this.createPuzzle();
         }, 200);
       }
@@ -102,7 +103,6 @@ export abstract class PuzzleComponent implements OnInit {
   }
 
   markPiece(piece) {
-    console.log($(piece).css('border-top-color'));
     if ($(piece).css('border-top-color') == 'rgb(255, 255, 255)') {
       $(piece).css('border-color', 'black');
     } else {

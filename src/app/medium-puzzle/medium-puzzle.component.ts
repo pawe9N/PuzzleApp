@@ -12,12 +12,14 @@ export class MediumPuzzleComponent extends PuzzleComponent {
   constructor() {
     super();
 
+    this.ngForVar = Array(16).fill(0).map((x,i)=>i+1);
     this.board = [];
     this.lvl = 2;
     this.inRow = 4;
    }
 
   ngOnInit() {
+    console.log(this.ngForVar);
     $(document).ready(()=>{
       $('.puzzle2').on('click', (event)=>{
         this.clickPuzzle(event);

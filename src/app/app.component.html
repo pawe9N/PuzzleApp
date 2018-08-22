@@ -11,10 +11,10 @@
         </div>
         <div class="middleContent">
             <div class="levels" [ngSwitch]='choosedLvl'>
-                <easy-puzzle [hidden]="choosedLvl != 1"></easy-puzzle>
-                <medium-puzzle [hidden]="choosedLvl != 2"></medium-puzzle>
-                <hard-puzzle [hidden]="choosedLvl != 3"></hard-puzzle>
-                <very-hard-puzzle [hidden]="choosedLvl != 4"></very-hard-puzzle>
+                <easy-puzzle (updatePoints)="updateCookie($event)" [hidden]="choosedLvl != 1"></easy-puzzle>
+                <medium-puzzle (updatePoints)="updateCookie($event)"  [hidden]="choosedLvl != 2"></medium-puzzle>
+                <hard-puzzle (updatePoints)="updateCookie($event)"  [hidden]="choosedLvl != 3"></hard-puzzle>
+                <insane-puzzle (updatePoints)="updateCookie($event)" [hidden]="choosedLvl != 4"></insane-puzzle>
             </div> 
             <h2>Choose difficulty:</h2>
             <ul>
@@ -25,27 +25,7 @@
             </ul>
         </div>
         <div class="rightContent">
-          <table>
-            <tr>
-              <th colspan="2" id="thead">How many puzzles are you solved?</th>
-            </tr>
-            <tr>
-              <th>Easy</th>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>Medium</th>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>Hard</th>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>Insane</th>
-              <td>0</td>
-            </tr>
-          </table>
+          <points-table></points-table>
         </div>
         <div>
   </div>

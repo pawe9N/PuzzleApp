@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { EasyPuzzleComponent } from './easy-puzzle/easy-puzzle.component';
 import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
 import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
-import { VeryHardPuzzleComponent } from './very-hard-puzzle/very-hard-puzzle.component';
+import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
+import { PointsTableComponent } from './points-table/points-table.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { VeryHardPuzzleComponent } from './very-hard-puzzle/very-hard-puzzle.com
     EasyPuzzleComponent,
     MediumPuzzleComponent,
     HardPuzzleComponent,
-    VeryHardPuzzleComponent
+    InsanePuzzleComponent,
+    PointsTableComponent
   ],
   imports: [
     BrowserModule

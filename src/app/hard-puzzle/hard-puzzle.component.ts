@@ -12,6 +12,7 @@ export class HardPuzzleComponent extends PuzzleComponent {
   constructor() {
     super();
 
+    this.ngForVar = Array(25).fill(0).map((x,i)=>i+1);
     this.board = [];
     this.lvl = 3;
     this.inRow = 5;
