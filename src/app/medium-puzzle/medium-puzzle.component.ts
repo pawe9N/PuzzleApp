@@ -19,7 +19,6 @@ export class MediumPuzzleComponent extends PuzzleComponent {
    }
 
   ngOnInit() {
-    console.log(this.ngForVar);
     $(document).ready(()=>{
       $('.puzzle2').on('click', (event)=>{
         this.clickPuzzle(event);

@@ -17,7 +17,7 @@ export class EasyPuzzleComponent extends PuzzleComponent{
     this.board = [];
     this.lvl = 1;
     this.inRow = 3;
-   }
+  }
 
   ngOnInit() {
     $(document).ready(()=>{

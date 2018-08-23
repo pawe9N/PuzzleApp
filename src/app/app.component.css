@@ -46,16 +46,19 @@
         margin-left: 10%;
     }
 
+    .rightContent{
+        width: 50%;
+    }
+
   }
 
-.leftContent, .middleContent, .rightContent{
+.leftContent, .middleContent, .rightContentTop{
     color:  #333;
     margin: 0.5%;
     background-color: #6E6E6e;
     flex-direction: column;
     padding: 3%;
     padding-top: 0.5%;
-    width: 42%;
     border: 3px solid  #333;
     border-radius: 10%;
     width: 380px;
@@ -107,7 +110,7 @@ li{
 .levels{
     width: 330px;
     height: 330px;
-    margin-left: 5%;
+    margin-left: 2%;
     margin-top: 4%;
 }
 
@@ -141,7 +144,15 @@ li{
 }
 
 .rightContent{
+    flex-direction: row;  
+}
+
+.rightContentTop, .rightContentBottom{
+    border: 3px solid  #333;
+    border-radius: 10%;
+    background-color: #6E6E6e;
     width: auto;
     height: 200px;
-    padding: 2%;
+    padding: 5%;
+    margin: 4%;
 }

@@ -7,6 +7,7 @@ import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
 import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
 import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
 import { PointsTableComponent } from './points-table/points-table.component';
+import { DefaultImagesComponent } from './default-images/default-images.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PointsTableComponent } from './points-table/points-table.component';
     MediumPuzzleComponent,
     HardPuzzleComponent,
     InsanePuzzleComponent,
-    PointsTableComponent
+    PointsTableComponent,
+    DefaultImagesComponent
   ],
   imports: [
     BrowserModule

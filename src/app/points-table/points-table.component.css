@@ -8,6 +8,14 @@ th, td {
     padding: 8px;
 }
 
+th{
+    font-weight: lighter;
+}
+
+td{
+    font-weight: bold;
+}
+
 th {
     background-color: #333;
     color: white;

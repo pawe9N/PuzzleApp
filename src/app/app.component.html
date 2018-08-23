@@ -4,7 +4,7 @@
     <hr>
   <div class="content">
       <div class="leftContent">
-          <img src="{{imageUrl}}" on-error="badImageUrl()"/>
+          <img class="image" src="{{imageUrl}}" on-error="badImageUrl()"/>
           <h2>Upload image:</h2>
           <input class="imageUrlText" type="text" placeholder="Image url:">
           <button class="uploadImageButton" >Upload</button>
@@ -25,7 +25,12 @@
             </ul>
         </div>
         <div class="rightContent">
-          <points-table></points-table>
+          <div class="rightContentTop">
+              <points-table></points-table>
+          </div>
+          <div class="rightContentBottom">
+              <default-images (selectImageBackground)="changeImageUrl($event)"></default-images>
+          </div>
         </div>
         <div>
   </div>

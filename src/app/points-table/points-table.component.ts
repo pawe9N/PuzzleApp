@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'points-table',
@@ -8,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class PointsTableComponent implements OnInit {
 
-  private cookieNames = ['Easy-Level-Points', 'Medium-Level-Points', 'Hard-Level-Points', 'Insane-Level-Points'];
+  private cookieNames = ['easy-level-points', 'medium-level-points', 'hard-level-points', 'insane-level-points'];
   private easyLevelPoints;
   private mediumLevelPoints;
   private hardLevelPoints;
@@ -19,7 +20,6 @@ export class PointsTableComponent implements OnInit {
   ngOnInit() {
     this.initCookies();
     this.setAllPoints();
-    console.log(this.easyLevelPoints);
   }
 
   initCookiePuzzleLevelPoints(cookieName){
@@ -48,7 +48,7 @@ export class PointsTableComponent implements OnInit {
   updateCookie(lvl){
     this.cookieService.set(this.cookieNames[lvl-1],  (parseInt(this.cookieService.get(this.cookieNames[lvl-1]))+1).toString());
     this.setAllPoints();
-    console.log(this.cookieService.get(this.cookieNames[lvl-1]))
+    $('.'+this.cookieNames[lvl-1]).text(this.cookieService.get(this.cookieNames[lvl-1]));
   }
 
 }

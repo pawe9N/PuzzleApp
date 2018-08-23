@@ -43,8 +43,6 @@ export class AppComponent {
 
         if(url != ""){
           this.changeImageUrl(url);
-          $('.puzzle').css('background-image', 'url('+this.imageUrl+')');
-          this.choosePuzzleLevelToCreate();
   
           $('.imageUrlText').val('');
         }
@@ -76,10 +74,12 @@ export class AppComponent {
   
   changeImageUrl(url){
     this.imageUrl = url;
+    $('.puzzle').css('background-image', 'url('+this.imageUrl+')');
+    $('.image').prop('src', this.imageUrl);
+    this.choosePuzzleLevelToCreate();
   }
 
   updateCookie(puzzleLvl) {
-    console.log(puzzleLvl);
     this.pointsTable.updateCookie(puzzleLvl);
   }
 }
