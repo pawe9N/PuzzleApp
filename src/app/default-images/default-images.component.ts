@@ -8,8 +8,8 @@ import * as $ from 'jquery';
 })
 export class DefaultImagesComponent implements OnInit {
 
-  private ngForVar = Array(9).fill(0).map((x,i)=>i);
-  private imgUrls = ["https://upload.wikimedia.org/wikipedia/commons/6/6b/Zamek_w_B%C4%99dzinie_1.JPG", 
+  public ngForVar = Array(9).fill(0).map((x,i)=>i);
+  public imgUrls = ["https://upload.wikimedia.org/wikipedia/commons/6/6b/Zamek_w_B%C4%99dzinie_1.JPG", 
 "https://www.wanderluststorytellers.com/wp-content/uploads/2017/10/Best-Castles-in-France-Feature-1080x720.jpg",
 "http://images.fanpop.com/images/image_uploads/Boldt-Castle-castles-543276_1024_683.jpg",
 "https://www.tallshipsnola2018.com/wp-content/uploads/2017/07/ELISSA-1-e1502134242301.jpg",

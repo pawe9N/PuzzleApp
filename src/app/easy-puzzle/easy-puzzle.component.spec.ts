@@ -45,12 +45,15 @@ describe('EasyPuzzleComponent', () => {
     expect(component.board.length).toBe(9)
   });
 
-  it('should have div with puzzless and lv1 class in DOM', ()=>{
-    expect(de.query(By.css('.puzzles')).nativeElement.className).toBe('puzzles lv1');
+  it('should have div with puzzle and lv1 class in DOM', ()=>{
+    for(let i=1; i<=component.board.length; i++){
+      expect(de.query(By.css('.puzzle')).nativeElement.className).toBe('puzzle1 puzzle p'+i+'lv1');
+    }
   });
 
-  it('should create 9 puzzle div in DOM after calling createPuzzle function', ()=>{
-    component.createPuzzle();
-    expect(de.query(By.css('.puzzles')).nativeElement.children.length).toBe(9);
+  it('should have ngForVar puzzle divs', () => {
+    component.ngForVar.forEach(number =>{
+      expect(de.query(By.css('.p'+number+'lv1')).nativeElement.className).toBe('puzzle1 puzzle p'+number+'lv1');
+    });
   });
 });

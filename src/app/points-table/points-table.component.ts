@@ -9,7 +9,7 @@ import * as $ from 'jquery';
 })
 export class PointsTableComponent implements OnInit {
 
-  private cookieNames = ['easy-level-points', 'medium-level-points', 'hard-level-points', 'insane-level-points'];
+  public cookieNames = ['easy-level-points', 'medium-level-points', 'hard-level-points', 'insane-level-points'];
   private easyLevelPoints;
   private mediumLevelPoints;
   private hardLevelPoints;

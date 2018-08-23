@@ -5,6 +5,9 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
 import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
 import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
 import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
+import { DefaultImagesComponent } from './default-images/default-images.component';
+import { PointsTableComponent } from './points-table/points-table.component';
+import { CookieService } from 'ngx-cookie-service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -15,8 +18,13 @@ describe('AppComponent', () => {
         PuzzleComponent,
         MediumPuzzleComponent,
         HardPuzzleComponent,
-        InsanePuzzleComponent
+        InsanePuzzleComponent,
+        DefaultImagesComponent,
+        PointsTableComponent
       ],
+      providers: [
+        CookieService
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
