@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PuzzleComponent } from '../puzzle/puzzle.component';
 import * as $ from 'jquery';
 

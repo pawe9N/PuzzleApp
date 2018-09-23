@@ -8,6 +8,9 @@ import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
 import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
 import { PointsTableComponent } from './points-table/points-table.component';
 import { DefaultImagesComponent } from './default-images/default-images.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -20,8 +23,11 @@ import { DefaultImagesComponent } from './default-images/default-images.componen
     DefaultImagesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
+  providers:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

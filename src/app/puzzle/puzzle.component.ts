@@ -54,6 +54,7 @@ export class PuzzleComponent implements OnInit {
       this.markPiece(this.secondPiece);
     }
 
+
     if (this.firstPiece != null && this.secondPiece != null) {
       let imagePos = $(this.firstPiece).css('background-position');
       $(this.firstPiece).css('background-position', $(this.secondPiece).css('background-position'));
@@ -67,9 +68,8 @@ export class PuzzleComponent implements OnInit {
 
       let isMatching = this.isSolved();
       if (isMatching) {
+        this.updatePoints.emit(lvl);
         setTimeout(() => {
-          alert("You solved Level:" + lvl + " of puzzle");
-          this.updatePoints.emit(lvl);
           this.createPuzzle();
         }, 200);
       }

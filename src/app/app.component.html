@@ -1,38 +1,74 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="app-body">
-    <h1>Welcome to {{ title }}!</h1>
-    <hr>
-  <div class="content">
-      <div class="leftContent">
-          <img class="image" src="{{imageUrl}}" on-error="badImageUrl()"/>
-          <h2>Upload image:</h2>
-          <input class="imageUrlText" type="text" placeholder="Image url:">
-          <button class="uploadImageButton" >Upload</button>
+<div class="navbar">
+    <h1 class="mx-auto">Welcome to {{ title }}!</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card text-white bg-dark">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img class="image rounded mx-auto d-block" src="{{imageUrl}}" on-error="badImageUrl()"/>
+                            </div>
+                            <div class="col-md-12">
+                                <h2 class="text-center">Upload image:</h2>
+                            </div>
+                            <div class="col-md-8 offset-md-2">
+                                <input class="imageUrlText form-control" type="text" placeholder="Image url:">
+                            </div>
+                            <div class="col-md-8 offset-md-2">
+                                <button class="btn btn-default btn-block uploadImageButton" type="button">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="middleContent">
-            <div class="levels" [ngSwitch]='choosedLvl'>
-                <easy-puzzle (updatePoints)="updateCookie($event)" [hidden]="choosedLvl != 1"></easy-puzzle>
-                <medium-puzzle (updatePoints)="updateCookie($event)"  [hidden]="choosedLvl != 2"></medium-puzzle>
-                <hard-puzzle (updatePoints)="updateCookie($event)"  [hidden]="choosedLvl != 3"></hard-puzzle>
-                <insane-puzzle (updatePoints)="updateCookie($event)" [hidden]="choosedLvl != 4"></insane-puzzle>
-            </div> 
-            <h2>Choose difficulty:</h2>
-            <ul>
-              <li #cmp value='1' class="lvlChooser defaultLvlChooser">Easy</li>
-              <li #cmp value="2" class="lvlChooser">Medium</li>
-              <li #cmp value="3" class="lvlChooser">Hard</li>
-              <li #cmp value="4" class="lvlChooser">Insane</li>
-            </ul>
+        <div class="col-lg-5">
+            <div class="card text-white bg-dark">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="levels mx-auto pl-md-2" [ngSwitch]='choosedLvl'>
+                            <easy-puzzle (updatePoints)="updateCookie($event)" [hidden]="choosedLvl != 1"></easy-puzzle>
+                            <medium-puzzle (updatePoints)="updateCookie($event)"  [hidden]="choosedLvl != 2"></medium-puzzle>
+                            <hard-puzzle (updatePoints)="updateCookie($event)"  [hidden]="choosedLvl != 3"></hard-puzzle>
+                            <insane-puzzle (updatePoints)="updateCookie($event)" [hidden]="choosedLvl != 4"></insane-puzzle>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center">Choose difficulty:</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list p-1">
+                            <li value='1' class="lvlChooser defaultLvlChooser">Easy</li>
+                            <li value="2" class="lvlChooser">Medium</li>
+                            <li value="3" class="lvlChooser">Hard</li>
+                            <li value="4" class="lvlChooser">Insane</li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
         </div>
-        <div class="rightContent">
-          <div class="rightContentTop">
-              <points-table></points-table>
-          </div>
-          <div class="rightContentBottom">
-              <default-images (selectImageBackground)="changeImageUrl($event)"></default-images>
-          </div>
+        <div class="col-lg-3">
+            <div class="card text-white bg-dark">
+                <div class="row">
+                    <div class="col-md-12">
+                        <points-table></points-table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="points mx-auto pl-md-3 m-4">
+                        <default-images (selectImageBackground)="changeImageUrl($event)"></default-images>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-  </div>
+    </div>
 </div>
 

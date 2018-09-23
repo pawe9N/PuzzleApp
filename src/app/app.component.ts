@@ -1,11 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import * as $ from 'jquery';
 import { EasyPuzzleComponent } from './easy-puzzle/easy-puzzle.component';
 import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
 import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
 import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
-import { CookieService } from 'ngx-cookie-service';
 import { PointsTableComponent } from './points-table/points-table.component';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +15,14 @@ import { PointsTableComponent } from './points-table/points-table.component';
   styleUrls: ['./app.component.css'],
   providers: [ CookieService ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   private title = 'PuzzleApp';
   private imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/6b/Zamek_w_B%C4%99dzinie_1.JPG";
   private choosedLvl = 1;
+  private subscription: Subscription;
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService, 
+              private toastr: ToastrService) { }
 
   @ViewChild(EasyPuzzleComponent) easyPuzzle:EasyPuzzleComponent;
   @ViewChild(MediumPuzzleComponent) mediumPuzzle:MediumPuzzleComponent;
@@ -27,9 +31,10 @@ export class AppComponent {
   @ViewChild(PointsTableComponent) pointsTable:PointsTableComponent;
 
   ngOnInit() {
+
     $(document).ready(()=>{
       $('.puzzle').css('background-image', 'url('+this.imageUrl+')');
-      this.easyPuzzle.createPuzzle();
+      this.easyPuzzle.createPuzzle();  
     });
 
     $('.imageUrlText').keyup((e) => {
@@ -68,6 +73,7 @@ export class AppComponent {
   }
 
   badImageUrl(){
+    this.toastr.error("Bad image url!");
     this.imageUrl = 'http://noticiasnet.com.ar/latiendanet/oc-content/themes/osclasswizards/images/no_photo.gif';
     $('.defaultLvlChooser').click();
   }
@@ -81,5 +87,6 @@ export class AppComponent {
 
   updateCookie(puzzleLvl) {
     this.pointsTable.updateCookie(puzzleLvl);
+    this.toastr.success(`You solved ${puzzleLvl} lvl puzzle`);
   }
 }

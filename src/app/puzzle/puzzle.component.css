@@ -1,10 +1,6 @@
-.puzzles {
-    width: 330px;
-    height: 330px;
-}
 .puzzle{
+    display: inline-block;
     background-size: 300px 300px;
-    float: left;
     border: 1px solid white;
     padding: 1px;
 }
