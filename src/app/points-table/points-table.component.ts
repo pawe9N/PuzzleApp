@@ -5,7 +5,8 @@ import * as $ from 'jquery';
 @Component({
   selector: 'points-table',
   templateUrl: './points-table.component.html',
-  styleUrls: ['./points-table.component.css']
+  styleUrls: ['./points-table.component.css'],
+  providers: [CookieService]
 })
 export class PointsTableComponent implements OnInit {
 

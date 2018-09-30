@@ -1,28 +1,23 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
 import * as $ from 'jquery';
 import { EasyPuzzleComponent } from './easy-puzzle/easy-puzzle.component';
 import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
 import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
 import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
 import { PointsTableComponent } from './points-table/points-table.component';
-import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [ CookieService ]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private title = 'PuzzleApp';
   private imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/6b/Zamek_w_B%C4%99dzinie_1.JPG";
   private choosedLvl = 1;
-  private subscription: Subscription;
 
-  constructor(private cookieService: CookieService, 
-              private toastr: ToastrService) { }
+  constructor(private toastr: ToastrService,
+              private zone:NgZone) { }
 
   @ViewChild(EasyPuzzleComponent) easyPuzzle:EasyPuzzleComponent;
   @ViewChild(MediumPuzzleComponent) mediumPuzzle:MediumPuzzleComponent;
@@ -60,7 +55,6 @@ export class AppComponent implements OnInit {
       this.choosedLvl = $(event.target).val();
       this.choosePuzzleLevelToCreate();
     });
-
   }
 
   choosePuzzleLevelToCreate(){
@@ -87,6 +81,10 @@ export class AppComponent implements OnInit {
 
   updateCookie(puzzleLvl) {
     this.pointsTable.updateCookie(puzzleLvl);
+    this.zone.run(() => {this.showSuccessToastr(puzzleLvl)});
+  }
+
+  showSuccessToastr(puzzleLvl){
     this.toastr.success(`You solved ${puzzleLvl} lvl puzzle`);
   }
 }

@@ -1,3 +1,4 @@
+import { PointsService } from './../points-table/points.service';
 import { Component, OnInit } from '@angular/core';
 import { PuzzleComponent } from '../puzzle/puzzle.component';
 import * as $ from 'jquery';

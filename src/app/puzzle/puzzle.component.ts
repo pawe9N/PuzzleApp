@@ -1,3 +1,4 @@
+import { PointsService } from './../points-table/points.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import * as $ from 'jquery';
 
@@ -53,7 +54,6 @@ export class PuzzleComponent implements OnInit {
       this.secondPiece = $(event.target);
       this.markPiece(this.secondPiece);
     }
-
 
     if (this.firstPiece != null && this.secondPiece != null) {
       let imagePos = $(this.firstPiece).css('background-position');
