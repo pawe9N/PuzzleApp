@@ -1,4 +1,3 @@
-import { PointsService } from './../points-table/points.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import * as $ from 'jquery';
 

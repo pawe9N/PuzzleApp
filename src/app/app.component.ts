@@ -1,3 +1,4 @@
+import { AchievementsComponent } from './achievements/achievements.component';
 import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
 import * as $ from 'jquery';
 import { EasyPuzzleComponent } from './easy-puzzle/easy-puzzle.component';
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
   @ViewChild(HardPuzzleComponent) hardPuzzle:HardPuzzleComponent;
   @ViewChild(InsanePuzzleComponent) insanePuzzle:InsanePuzzleComponent;
   @ViewChild(PointsTableComponent) pointsTable:PointsTableComponent;
+  @ViewChild(AchievementsComponent) achievements:AchievementsComponent;
 
   ngOnInit() {
 
@@ -85,6 +87,25 @@ export class AppComponent implements OnInit {
   }
 
   showSuccessToastr(puzzleLvl){
-    this.toastr.success(`You solved ${puzzleLvl} lvl puzzle`);
+
+    if(this.achievements.updateAchievments()){
+      this.toastr.info(`You earned an achievement!`);
+    }
+
+    switch(puzzleLvl)
+    {
+      case 1:
+        this.toastr.success(`You solved easy puzzle!`);
+        break;
+      case 2:
+        this.toastr.success(`You solved medium puzzle!`);
+        break;
+      case 3:
+        this.toastr.success(`You solved hard puzzle!`);
+        break;
+      case 4:
+        this.toastr.success(`You solved insane puzzle!`);
+        break;
+    }
   }
 }

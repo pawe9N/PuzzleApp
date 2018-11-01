@@ -150,22 +150,6 @@ li{
     color: #333;
 }
 
-.footer{
-    height: 250px;
-}
-
-.badge{
-    width: 30%;
-    font-size: 119%;
-    margin-left: 2.5%;
-    opacity: 0.5;
-}
-
-.achieved{
-    opacity: 1;
-    cursor: pointer;
-}
-
 /*
 .imageUrlText{
     width: 90%;

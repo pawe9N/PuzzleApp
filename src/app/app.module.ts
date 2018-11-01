@@ -10,6 +10,7 @@ import { PointsTableComponent } from './points-table/points-table.component';
 import { DefaultImagesComponent } from './default-images/default-images.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AchievementsComponent } from './achievements/achievements.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HardPuzzleComponent,
     InsanePuzzleComponent,
     PointsTableComponent,
-    DefaultImagesComponent
+    DefaultImagesComponent,
+    AchievementsComponent
   ],
   imports: [
     BrowserModule,
