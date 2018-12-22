@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ToastrModule } from 'ngx-toastr';
 import { AchievementsComponent } from './achievements.component';
 
 describe('AchievmentsComponent', () => {
@@ -8,7 +8,8 @@ describe('AchievmentsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AchievementsComponent ]
+      declarations: [ AchievementsComponent ],
+      imports: [ToastrModule.forRoot(),]
     })
     .compileComponents();
   }));
@@ -22,4 +23,7 @@ describe('AchievmentsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
 });

@@ -3,7 +3,6 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { DefaultImagesComponent } from './default-images.component';
-import { $ } from 'protractor';
 
 describe('DefaultImagesComponent', () => {
   let component: DefaultImagesComponent;
@@ -42,7 +41,7 @@ describe('DefaultImagesComponent', () => {
 
   it('should have 9 defaultImage divs', () => {
     component.ngForVar.forEach(number =>{
-      expect(de.query(By.css('.defaultImage'+number)).nativeElement.className).toBe('defaultImage defaultImage'+number);
+      expect(de.query(By.css('.defaultImage'+number)).nativeElement.className).toContain('defaultImage defaultImage'+number);
     });
   });
 });

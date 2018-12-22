@@ -46,13 +46,13 @@ describe('MediumPuzzleComponent', () => {
 
   it('should have div with puzzle and lv2 class in DOM', ()=>{
     for(let i=1; i<=component.board.length; i++){
-      expect(de.query(By.css('.puzzle')).nativeElement.className).toBe('puzzle2 puzzle p'+i+'lv2');
+      expect(de.query(By.css('.puzzle')).nativeElement.className).toContain('puzzle2 puzzle p'+i+'lv2');
     }
   });
 
   it('should have ngForVar puzzle divs', () => {
     component.ngForVar.forEach(number =>{
-      expect(de.query(By.css('.p'+number+'lv2')).nativeElement.className).toBe('puzzle2 puzzle p'+number+'lv2');
+      expect(de.query(By.css('.p'+number+'lv2')).nativeElement.className).toContain('puzzle2 puzzle p'+number+'lv2');
     });
   });
 });

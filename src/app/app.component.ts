@@ -16,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AppComponent implements OnInit {
   private imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/6b/Zamek_w_B%C4%99dzinie_1.JPG";
   private choosedLvl = 1;
+  private title = "PuzzleApp";
 
   constructor(private toastr: ToastrService,
               private zone:NgZone) { }

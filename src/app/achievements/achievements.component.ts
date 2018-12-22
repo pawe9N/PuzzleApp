@@ -1,4 +1,3 @@
-import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -12,8 +11,7 @@ export class AchievementsComponent implements OnInit {
   private cookieNames = ['easy-level-points', 'medium-level-points', 'hard-level-points', 'insane-level-points'];
   private points = ['0', '0', '0', '0'];
 
-  constructor(private cookieService: CookieService,
-              private toastr: ToastrService) { }
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
     this.initAchievments();
@@ -27,13 +25,17 @@ export class AchievementsComponent implements OnInit {
   }
 
   updateAchievments(){
+    let achieved = false;
     for(let i=0; i<4; i++){
       if(this.points[i] != this.cookieService.get(this.cookieNames[i])){
         this.points[i] = this.cookieService.get(this.cookieNames[i]);
-        return true;
+        if(+this.points[i] % 3 == 1)
+        {
+          achieved = true;
+        }
       }
     }
-    return false;
+    return achieved;
   }
 
 }
