@@ -37,18 +37,12 @@ export class AppComponent implements OnInit {
 
     $('.imageUrlText').keyup((e) => {
       if(e.which == 13){
-          $('.uploadImageButton').click();
+        this.uploadImage();
       }
     });
 
     $('.uploadImageButton').on('click', () =>{
-        let url = $('.imageUrlText').val();
-
-        if(url != ""){
-          this.changeImageUrl(url);
-  
-          $('.imageUrlText').val('');
-        }
+        this.uploadImage();
     });
 
     $('.lvlChooser').on('click', (event) =>{
@@ -58,6 +52,16 @@ export class AppComponent implements OnInit {
       this.choosedLvl = $(event.target).val();
       this.choosePuzzleLevelToCreate();
     });
+  }
+
+  uploadImage(){
+    let url = $('.imageUrlText').val();
+
+    if(url != ""){
+      this.changeImageUrl(url);
+
+      $('.imageUrlText').val('');
+    }
   }
 
   choosePuzzleLevelToCreate(){
@@ -89,7 +93,7 @@ export class AppComponent implements OnInit {
 
   showSuccessToastr(puzzleLvl){
 
-    if(this.achievements.updateAchievments()){
+    if(this.achievements.updateAchievements()){
       this.toastr.info(`You earned an achievement!`);
     }
 

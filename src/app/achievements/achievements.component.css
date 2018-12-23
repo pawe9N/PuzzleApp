@@ -1,8 +1,8 @@
 .badge{
-    width: 30%;
+    width: 28%;
     font-size: 119%;
-    margin-left: 2.5%;
-    opacity: 0.5;
+    margin-left: 4%;
+    opacity: 0.3;
 }
 
 .achieved{
@@ -16,4 +16,5 @@
 
 .card{
     border-color: white;
+    background-color: #434B53 !important;
 }

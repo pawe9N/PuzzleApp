@@ -10,6 +10,7 @@ import { DefaultImagesComponent } from './default-images/default-images.componen
 import { PointsTableComponent } from './points-table/points-table.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
+import * as $ from 'jquery';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -71,11 +72,87 @@ describe('AppComponent', () => {
     expect(app.ngOnInit).toBeDefined();
   });
 
+  it('should call "uploadImage" method when keyup with Enter was triggered on ".imageUrlText" after "ngOnInit" was called', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app, 'uploadImage');
+    app.ngOnInit();
+    var e = $.Event('keyup');
+    e.which = 13;
+    $('.imageUrlText').trigger(e);
+    expect(app.uploadImage).toHaveBeenCalled();
+  })
+
+  it(`should not call "uploadImage" method when keyup which wasn't Enter was triggered on ".imageUrlText" after "ngOnInit" was called`, ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app, 'uploadImage');
+    app.ngOnInit();
+    var e = $.Event('keyup');
+    e.which = 1;
+    $('.imageUrlText').trigger(e);
+    expect(app.uploadImage).not.toHaveBeenCalled();
+  })
+
+  it(`should call "uploadImage" method when click was triggered on .uploadImageButton after "ngOnInit" was called`, ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app, 'uploadImage');
+    app.ngOnInit();
+    var e = $.Event('click');
+    $('.uploadImageButton').trigger(e);
+    expect(app.uploadImage).toHaveBeenCalled();
+  });
+
+  it('should have "uploadImage" method', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    expect(app.uploadImage).toBeDefined();
+  });
+
+  it('should call "changeImageUrl" method with .imageUrlText value parameter in "uploadImage" method when .imageUrlText is not empty', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    let imageUrlTextValue = 'www.somewebsite.com';
+    $('.imageUrlText').val(imageUrlTextValue);
+    expect($('.imageUrlText').val()).toBe(imageUrlTextValue);
+    spyOn(app, 'changeImageUrl')
+    app.uploadImage();
+    expect(app.changeImageUrl).toHaveBeenCalledWith(imageUrlTextValue);
+  });
+
+  it('should not call "changeImageUrl" method with .imageUrlText value parameter in "uploadImage" method when .imageUrlText is empty', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    let imageUrlTextValue = '';
+    $('.imageUrlText').val(imageUrlTextValue);
+    expect($('.imageUrlText').val()).toBe(imageUrlTextValue);
+    spyOn(app, 'changeImageUrl')
+    app.uploadImage();
+    expect(app.changeImageUrl).not.toHaveBeenCalledWith(imageUrlTextValue);
+  });
+
+  it('should change .imageUrlText value to empty string in "uploadImage" method when .imageUrlText is not empty', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    $('.imageUrlText').val('not empty');
+    expect($('.imageUrlText').val()).not.toBe('');
+    app.uploadImage();
+    expect($('.imageUrlText').val()).toBe('');
+  });
+
   it('should have "choosePuzzleLevelToCreate" method', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.choosePuzzleLevelToCreate).toBeDefined();
-  })
+  });
 
   it('should call "choosePuzzleLevelToCreate" method after calling ngOnInit and clicking in lvlChooser', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
@@ -96,7 +173,7 @@ describe('AppComponent', () => {
     spyOn(app.easyPuzzle, 'createPuzzle');
     app.choosePuzzleLevelToCreate();
     expect(app.easyPuzzle.createPuzzle).toHaveBeenCalled();
-  })
+  });
 
   it('should call "createPuzzle" method from mediumPuzzle after calling "choosePuzzleLevelToCreate" when Medium difficulty level is chosen', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
@@ -106,7 +183,7 @@ describe('AppComponent', () => {
     spyOn(app.mediumPuzzle, 'createPuzzle');
     app.choosePuzzleLevelToCreate();
     expect(app.mediumPuzzle.createPuzzle).toHaveBeenCalled();
-  })
+  });
 
   it('should call "createPuzzle" method from hardPuzzle after calling "choosePuzzleLevelToCreate" when Hard difficulty level is chosen', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
@@ -116,7 +193,7 @@ describe('AppComponent', () => {
     spyOn(app.hardPuzzle, 'createPuzzle');
     app.choosePuzzleLevelToCreate();
     expect(app.hardPuzzle.createPuzzle).toHaveBeenCalled();
-  })
+  });
 
   it('should call "createPuzzle" method from insanePuzzle after calling "choosePuzzleLevelToCreate" when Insane difficulty level is chosen', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
@@ -126,13 +203,13 @@ describe('AppComponent', () => {
     spyOn(app.insanePuzzle, 'createPuzzle');
     app.choosePuzzleLevelToCreate();
     expect(app.insanePuzzle.createPuzzle).toHaveBeenCalled();
-  })
+  });
 
   it('should have "badImageUrl" method', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.badImageUrl).toBeDefined();
-  })
+  });
 
   it('should call "error" method from toastr when "badImageUrl" method was called', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
@@ -159,7 +236,7 @@ describe('AppComponent', () => {
   it('should set "imageUrl" variable to new value when "changeImageUrl" method was called', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    let newValue = "new value";
+    let newValue = 'new value';
     app.changeImageUrl(newValue);
     expect(app.imageUrl).toBe(newValue);
   });
@@ -172,7 +249,117 @@ describe('AppComponent', () => {
     spyOn(debug.componentInstance, 'choosePuzzleLevelToCreate');
     debug.componentInstance.changeImageUrl("");
     expect(debug.componentInstance.choosePuzzleLevelToCreate).toHaveBeenCalled();
-  } );
+  });
+
+  it('should have "updateCookie" method', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.updateCookie).toBeDefined();
+  });
+
+  it('should call "updateCookie" method from points-table in "updateCookie" method', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    spyOn(app.pointsTable, 'updateCookie');
+    let param = '';
+    app.updateCookie(param);
+    expect(app.pointsTable.updateCookie).toHaveBeenCalled();
+  });
+
+  it('should call "run" method from zone in "updateCookie" method', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    spyOn(app.zone, 'run');
+    let param = '';
+    app.updateCookie(param);
+    expect(app.zone.run).toHaveBeenCalled();
+  });
+
+  it('should have "showSuccessToastr" method', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    expect(app.showSuccessToastr).toBeDefined();
+  });
+
+  it('should call "showSuccessToastr" method in "updateCookie" method', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    
+    spyOn(app, 'showSuccessToastr');
+    let param = '';
+    app.updateCookie(param);
+    expect(app.showSuccessToastr).toHaveBeenCalled();
+  });
+
+  it('should call "info" method from toastr in "showSuccessToastr" method when "updateAchievments" method  from achievements returns true', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app.achievements, 'updateAchievements').and.returnValue(true);
+    spyOn(app.toastr, 'info');
+    let param = '';
+    app.showSuccessToastr(param);
+    expect(app.toastr.info).toHaveBeenCalled();
+  });
+
+  it('should call "info" method from toastr with "`You earned an achievement!" parameter in "showSuccessToastr" method when "updateAchievments" method  from achievements returns true', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app.achievements, 'updateAchievements').and.returnValue(true);
+    spyOn(app.toastr, 'info');
+    let successToastrParameter = '';
+    let infoMessage = 'You earned an achievement!';
+    app.showSuccessToastr(successToastrParameter);
+    expect(app.toastr.info).toHaveBeenCalledWith(infoMessage);
+  });
+
+  it('should call "success" method from toastr with "You solved easy puzzle!" parameter in "showSuccessToastr" method when Easy difficulty level was chosen', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app.toastr, 'success');
+    let puzzleLvl = 1;
+    let successMessage = 'You solved easy puzzle!';
+    app.showSuccessToastr(puzzleLvl);
+    expect(app.toastr.success).toHaveBeenCalledWith(successMessage);
+  });
+
+  it('should call "success" method from toastr with "You solved medium puzzle!" parameter in "showSuccessToastr" method when Medium difficulty level was chosen', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app.toastr, 'success');
+    let puzzleLvl = 2;
+    let successMessage = 'You solved medium puzzle!';
+    app.showSuccessToastr(puzzleLvl);
+    expect(app.toastr.success).toHaveBeenCalledWith(successMessage);
+  });
+
+  it('should call "success" method from toastr with "You solved hard puzzle!" parameter in "showSuccessToastr" method when Hard difficulty level was chosen', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app.toastr, 'success');
+    let puzzleLvl = 3;
+    let successMessage = 'You solved hard puzzle!';
+    app.showSuccessToastr(puzzleLvl);
+    expect(app.toastr.success).toHaveBeenCalledWith(successMessage);
+  });
+
+  it('should call "success" method from toastr with "You solved insane puzzle!" parameter in "showSuccessToastr" method when Insane difficulty level was chosen', ()=>{
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+
+    spyOn(app.toastr, 'success');
+    let puzzleLvl = 4;
+    let successMessage = 'You solved insane puzzle!';
+    app.showSuccessToastr(puzzleLvl);
+    expect(app.toastr.success).toHaveBeenCalledWith(successMessage);
+  });
 
 
 

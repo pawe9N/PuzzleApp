@@ -56,4 +56,5 @@ describe('EasyPuzzleComponent', () => {
       expect(de.query(By.css('.p'+number+'lv1')).nativeElement.className).toContain('puzzle1 puzzle p'+number+'lv1');
     });
   });
+
 });

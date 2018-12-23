@@ -25,7 +25,7 @@ export class DefaultImagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    $(document).ready(() =>{
+    $(document).ready(()=>{
       this.setImgUrls();
 
       $('.defaultImage').on('click', (event)=>{
@@ -34,6 +34,7 @@ export class DefaultImagesComponent implements OnInit {
         this.selectImage(event.target);
       });
 
+      $('.defaultImage'+(Math.floor(Math.random() * 8))).click();
     });
   }
 

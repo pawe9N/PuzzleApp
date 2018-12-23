@@ -1,1 +1,3 @@
-<div class="puzzle1 puzzle p{{number}}lv1 ml-1" *ngFor="let number of ngForVar"></div>
+<div class="puzzle1 puzzle p{{number}}lv1 ml-1" 
+    (click)="clickPuzzle($event)" 
+    *ngFor="let number of ngForVar"></div>

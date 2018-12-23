@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { PuzzleComponent } from '../puzzle/puzzle.component';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'easy-puzzle',
@@ -8,7 +7,7 @@ import * as $ from 'jquery';
   styleUrls: ['../puzzle/puzzle.component.css', './easy-puzzle.component.css']
 })
 
-export class EasyPuzzleComponent extends PuzzleComponent{
+export class EasyPuzzleComponent extends PuzzleComponent {
 
   constructor() {
     super();
@@ -19,11 +18,4 @@ export class EasyPuzzleComponent extends PuzzleComponent{
     this.inRow = 3;
   }
 
-  ngOnInit() {
-    $(document).ready(()=>{
-      $('.puzzle1').on('click', (event)=>{
-        this.clickPuzzle(event);
-      });
-    });
-  }
 }

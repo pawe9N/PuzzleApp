@@ -15,16 +15,16 @@ export class AchievementsComponent implements OnInit {
 
   ngOnInit() {
     this.initAchievments();
+    
   }
 
   initAchievments(){
     for(let i=0; i<4; i++){
       this.points[i] = this.cookieService.get(this.cookieNames[i]);
     }
-    console.log(this.points)
   }
 
-  updateAchievments(){
+  updateAchievements(){
     let achieved = false;
     for(let i=0; i<4; i++){
       if(this.points[i] != this.cookieService.get(this.cookieNames[i])){
