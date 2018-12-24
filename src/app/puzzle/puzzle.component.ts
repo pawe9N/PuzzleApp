@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -6,7 +6,7 @@ import * as $ from 'jquery';
   template: '',
   styleUrls: ['./puzzle.component.css']
 })
-export class PuzzleComponent implements OnInit {
+export class PuzzleComponent {
   public firstPiece;
   public secondPiece;
   public board;
@@ -17,10 +17,6 @@ export class PuzzleComponent implements OnInit {
   @Output() updatePoints = new EventEmitter();
 
   constructor() { }
-
-  ngOnInit() {
-    
-  }
 
   createPuzzle() {
     this.board = [];
@@ -44,6 +40,10 @@ export class PuzzleComponent implements OnInit {
     }
   }
 
+  parsePuzzleLvlFromClass(classes){
+    return parseInt(classes.split('lv')[1]);
+  }
+
   clickPuzzle(event){
     if (this.firstPiece == null) {
       this.firstPiece = $(event.target);
@@ -62,8 +62,8 @@ export class PuzzleComponent implements OnInit {
       $(this.firstPiece).css('border', '1px solid white');
       $(this.secondPiece).css('border', '1px solid white');
 
-      let lvl = $(this.firstPiece).attr('class');
-      lvl = parseInt(lvl.split('lv')[1]);
+      let classes = $(this.firstPiece).attr('class');
+      let lvl = this.parsePuzzleLvlFromClass(classes);
 
       let isMatching = this.isSolved();
       if (isMatching) {
@@ -92,21 +92,33 @@ export class PuzzleComponent implements OnInit {
     return board;
   }
 
+  backgroundPositionOfPuzzle(i){
+    return $('.p' + (i + 1) + 'lv' + this.lvl).css('background-position');
+  }
+
+  positionOfPuzzleInBoard(i){
+    return this.board[i][0] + 'px ' + this.board[i][1] + 'px';
+  }
+
   isSolved() {
     for (let i = 0; i < this.inRow*this.inRow; i++) {
-      if (this.board[i][0] + 'px ' + this.board[i][1] + 'px' != $('.p' + (i + 1) + 'lv' + this.lvl).css('background-position')) {
+      if ( this.positionOfPuzzleInBoard(i) != this.backgroundPositionOfPuzzle(i)) {
         return false;
       }
     }
     return true;
   }
 
-  markPiece(piece) {
-    if ($(piece).css('border-top-color') == 'rgb(255, 255, 255)') {
-      $(piece).css('border-color', 'black');
-    } else {
-      $(piece).css('border-color', 'white');
+  oppositeColor(color){
+    if(color == 'rgb(255, 255, 255)'){
+      return 'black';
+    }else{
+      return 'white';
     }
+  }
+
+  markPiece(piece) {
+    $(piece).css('border-color', this.oppositeColor($(piece).css('border-top-color')));
   }
 
 }

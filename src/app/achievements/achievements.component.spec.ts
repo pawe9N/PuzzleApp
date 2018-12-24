@@ -42,14 +42,14 @@ describe('AchievmentsComponent', () => {
     expect(component['cookieService'].get).toHaveBeenCalled();
   });
 
-  it('should "updateAchievements" method returns true when cookieService has field with value which (value%3=1) and this field is not equal field from points array', ()=>{
+  it('should "updateAchievements" method returns true when cookieService has field with value which (value%3=1 && value<8) and this field is not equal field from points array', ()=>{
     component['points'] = ['0', '0', '0', '0'];
     spyOn(component['cookieService'], 'get').and.returnValue('1');
     let result = component.updateAchievements();
     expect(result).toBeTruthy();
   });
 
-  it('should "updateAchievements" method returns false when cookieService has not field with value which (value%3=1) and this field is not equal field from points array', ()=>{
+  it('should "updateAchievements" method returns false when cookieService has not field with value which (value%3=1 && value<8) and this field is not equal field from points array', ()=>{
     component['points'] = ['0', '0', '0', '0'];
     spyOn(component['cookieService'], 'get').and.returnValue('2');
     let result = component.updateAchievements();
@@ -62,10 +62,5 @@ describe('AchievmentsComponent', () => {
     let result = component.updateAchievements();
     expect(result).toBeFalsy();
   });
-
-  
-
-
-
 
 });

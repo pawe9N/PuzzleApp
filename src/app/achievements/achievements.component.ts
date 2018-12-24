@@ -15,7 +15,6 @@ export class AchievementsComponent implements OnInit {
 
   ngOnInit() {
     this.initAchievments();
-    
   }
 
   initAchievments(){
@@ -29,7 +28,7 @@ export class AchievementsComponent implements OnInit {
     for(let i=0; i<4; i++){
       if(this.points[i] != this.cookieService.get(this.cookieNames[i])){
         this.points[i] = this.cookieService.get(this.cookieNames[i]);
-        if(+this.points[i] % 3 == 1)
+        if(+this.points[i] % 3 == 1 && +this.points[i] < 8)
         {
           achieved = true;
         }

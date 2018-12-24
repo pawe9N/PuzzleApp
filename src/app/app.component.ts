@@ -1,12 +1,12 @@
 import { AchievementsComponent } from './achievements/achievements.component';
 import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
-import * as $ from 'jquery';
 import { EasyPuzzleComponent } from './easy-puzzle/easy-puzzle.component';
 import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
 import { HardPuzzleComponent } from './hard-puzzle/hard-puzzle.component';
 import { InsanePuzzleComponent } from './insane-puzzle/insane-puzzle.component';
 import { PointsTableComponent } from './points-table/points-table.component';
 import { ToastrService } from 'ngx-toastr';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',

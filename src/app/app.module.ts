@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { EasyPuzzleComponent } from './easy-puzzle/easy-puzzle.component';
 import { MediumPuzzleComponent } from './medium-puzzle/medium-puzzle.component';
@@ -22,12 +21,12 @@ import { AchievementsComponent } from './achievements/achievements.component';
     InsanePuzzleComponent,
     PointsTableComponent,
     DefaultImagesComponent,
-    AchievementsComponent
+    AchievementsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers:[],
   bootstrap: [AppComponent]
