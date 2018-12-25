@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-
 import { EasyPuzzleComponent } from './easy-puzzle.component';
 
 describe('EasyPuzzleComponent', () => {

@@ -1,9 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-
 import { HardPuzzleComponent } from './hard-puzzle.component';
-
 
 describe('HardPuzzleComponent', () => {
   let component: HardPuzzleComponent;
@@ -56,4 +54,5 @@ describe('HardPuzzleComponent', () => {
       expect(de.query(By.css('.p'+number+'lv3')).nativeElement.className).toContain('puzzle3 puzzle p'+number+'lv3');
     });
   });
+  
 });
