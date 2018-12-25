@@ -1,5 +1,5 @@
 # PuzzleApp
-PuzzleApp is a simple app created for learning Angular 6 and jasmine testing framework.
+PuzzleApp is a simple app created for learning Angular 6 and Jasmine testing framework.
 
 ## Description of application
 This web application allows you to create a puzzle with your favorite images from the Internet. After solving the puzzle, you get points and after reaching a certain amount of them you get an achievement. There are 4 difficulty levels in this puzzle application: Easy, Medium, Hard and Insane. Each of them is an adequate portion of challenge and fun.
