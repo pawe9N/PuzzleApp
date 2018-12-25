@@ -95,7 +95,5 @@ describe('PointsTableComponent', () => {
     component.updateCookie(1);
     expect(component['cookieService'].get).toHaveBeenCalled();
   });
-
-
-
+  
 });

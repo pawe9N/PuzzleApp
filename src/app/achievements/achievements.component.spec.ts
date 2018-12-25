@@ -24,15 +24,15 @@ describe('AchievmentsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have ngOnInit method', ()=>{
+  it('should have "ngOnInit" method', ()=>{
     expect(component.ngOnInit).toBeDefined();
   });
 
-  it('should have initAchievments method', ()=>{
+  it('should have "initAchievments" method', ()=>{
     expect(component.initAchievments).toBeDefined();
   });
 
-  it('should have updateAchievements method', ()=>{
+  it('should have "updateAchievements" method', ()=>{
     expect(component.updateAchievements).toBeDefined();
   });
   
