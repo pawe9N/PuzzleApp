@@ -28,7 +28,6 @@ import { AchievementsComponent } from './achievements/achievements.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

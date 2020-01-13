@@ -14,7 +14,7 @@ import * as $ from 'jquery';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/6b/Zamek_w_B%C4%99dzinie_1.JPG";
+  private imageUrl = "../assets/castle1.jpg";
   private choosedLvl = 1;
   private title = "PuzzleApp";
 
@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
 
   badImageUrl(){
     this.toastr.error("Bad image url!");
-    this.imageUrl = 'http://noticiasnet.com.ar/latiendanet/oc-content/themes/osclasswizards/images/no_photo.gif';
+    this.imageUrl = '../assets/no-image.jpg';
     $('.defaultLvlChooser').click();
   }
   

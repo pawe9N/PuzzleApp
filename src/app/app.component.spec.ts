@@ -60,10 +60,10 @@ describe('AppComponent', () => {
     expect(app.imageUrl.length).toBeGreaterThan(0);
   });
 
-  it('should have as imageUrl value link with https', ()=>{
+  it('should have as imageUrl value link with assets', ()=>{
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.imageUrl).toContain('https');
+    expect(app.imageUrl).toContain('assets');
   });
 
   it('should have "ngOnInit" method', ()=>{
