@@ -33,5 +33,5 @@ After that karma will start executing tests. When it finish to launching them yo
 <img src="https://i.imgur.com/Y946ceb.gif">
 
 - what if you type bad link?
-<img src="https://i.imgur.com/x3lXp4n.gif">
+<img src="https://i.imgur.com/rQ3UOhp.gif">
 
